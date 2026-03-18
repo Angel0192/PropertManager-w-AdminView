@@ -15,7 +15,6 @@ namespace PropertyManager.Controllers
         }
 
         // GET: RentSchedules
-        [cite_start]// Displays all schedules and joins the Tenant table to show names [cite: 115, 122]
         public async Task<IActionResult> Index()
         {
             var schedules = await _context.RentSchedules
@@ -41,7 +40,7 @@ namespace PropertyManager.Controllers
         // GET: RentSchedules/Create
         public IActionResult Create()
         {
-            [cite_start]// Populates the dropdown with Tenant LastNames 
+            // Populates the dropdown with Tenant LastNames 
             ViewData["TenantID"] = new SelectList(_context.Tenants, "TenantID", "LastName");
             return View();
         }
@@ -51,7 +50,7 @@ namespace PropertyManager.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ScheduleID,TenantID,DueDate,Status,BaseRent,LateFeeAccrued,ReminderCount")] RentSchedules rentSchedule)
         {
-            [cite_start]if (ModelState.IsValid) // [cite: 117, 123]
+            if (ModelState.IsValid) // [cite: 117, 123]
             {
                 _context.Add(rentSchedule);
                 await _context.SaveChangesAsync();

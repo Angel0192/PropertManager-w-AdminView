@@ -3086,11 +3086,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/angellopez/Library/CloudStorage/OneDrive-UniversityofSouthernIndiana/Classes/Sophmore Year/Spring/CS 458/Assignments/Assignment 7/PropertyManager/PropertyManager.csproj",
+      "projectUniqueName": "/Users/angellopez/Library/CloudStorage/OneDrive-UniversityofSouthernIndiana/Classes/Sophmore Year/Spring/CS 458/Assignments/Midterm/PropertyManager/PropertyManager.csproj",
       "projectName": "PropertyManager",
-      "projectPath": "/Users/angellopez/Library/CloudStorage/OneDrive-UniversityofSouthernIndiana/Classes/Sophmore Year/Spring/CS 458/Assignments/Assignment 7/PropertyManager/PropertyManager.csproj",
+      "projectPath": "/Users/angellopez/Library/CloudStorage/OneDrive-UniversityofSouthernIndiana/Classes/Sophmore Year/Spring/CS 458/Assignments/Midterm/PropertyManager/PropertyManager.csproj",
       "packagesPath": "/Users/angellopez/.nuget/packages/",
-      "outputPath": "/Users/angellopez/Library/CloudStorage/OneDrive-UniversityofSouthernIndiana/Classes/Sophmore Year/Spring/CS 458/Assignments/Assignment 7/PropertyManager/obj/",
+      "outputPath": "/Users/angellopez/Library/CloudStorage/OneDrive-UniversityofSouthernIndiana/Classes/Sophmore Year/Spring/CS 458/Assignments/Midterm/PropertyManager/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/angellopez/.nuget/NuGet/NuGet.Config"

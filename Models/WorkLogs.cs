@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace PropertyManager.Models
 {
     public class WorkLogs
     {
         // LogID PK
+        [Key]
         public int LogID{get; set;}
 
         // Project ID FK
@@ -20,16 +22,17 @@ namespace PropertyManager.Models
         public DateTime ClockOutTime{get; set;}
 
         // GPS Location
-        public string GPSLocation{get; set;}
+        public string GPSLocation{get; set;} = string.Empty;
 
         // ProofPhotoURL
-        public string ProofPhotoURL{get; set;}
+        public string ProofPhotoURL{get; set;} = string.Empty;
 
         // Materials Used
         public string MaterialsUsed{get; set;}
 
         // Vendor Signature
         public string VendorSignature{get; set;}
-
+        
+        public MaintenanceProjects? Project { get; set; }
     }
 }

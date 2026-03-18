@@ -1,3 +1,8 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using PropertyManager.Models; 
+
 public class InvoicesController : Controller
 {
     private readonly ApplicationDbContext _context;

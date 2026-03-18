@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,6 +10,7 @@ namespace PropertyManager.Models
     public class RentSchedules
     {
         // Schedule ID PK
+        [Key]
         public int ScheduleID {get;set;}
 
         // Tenant ID FK
@@ -27,6 +29,8 @@ namespace PropertyManager.Models
 
         // Reminder Count : Default = 0
         public int ReminderCount{get; set;} = 0;
+
+        public Tenant? Tenant { get; set; }
         
     }
 }

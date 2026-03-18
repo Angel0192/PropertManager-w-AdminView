@@ -2,14 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace PropertyManager.Models
 {
 
-    public enum InvoiceStatus{Bid, Appoved, Work_Order, Invoiced, Closed}
+    public enum InvoiceStatus{Bid, Approved, Work_Order, Invoiced, Closed}
     public class MaintenanceProjects
     {
         // ProjectID PK
+        [Key]
         public int ProjectID{get; set;}
 
         // PropertyID FK
@@ -25,5 +27,7 @@ namespace PropertyManager.Models
 
         // Assigned Vendor
         public string AssignedVendor{get; set;}
+
+        public Property? Property {get; set;}
     }
 }

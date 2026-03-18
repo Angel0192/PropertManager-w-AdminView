@@ -9,17 +9,11 @@ namespace PropertyManager.Models
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         public DbSet<Property> Properties { get; set; }
-
         public DbSet<Tenant> Tenants { get; set; }
-
-        public DbSet<WorkLogs> WorkLogs { get; set; }
-
         public DbSet<RentSchedules> RentSchedules { get; set; }
-
-        public DbSet<RentPayment> RentPayment { get; set; }
-
+        public DbSet<RentPayment> RentPayments { get; set; } 
         public DbSet<MaintenanceProjects> MaintenanceProjects { get; set; }
-
+        public DbSet<WorkLogs> WorkLogs { get; set; }
         public DbSet<Invoices> Invoices { get; set; }
 
 
@@ -27,9 +21,9 @@ namespace PropertyManager.Models
         {
             // Properties
             modelBuilder.Entity<Property>().HasData(
-                new Property { PropertyID = 1, PropertyName = "Maple Grove", Address = "1420 Lincoln Ave, Newburgh, IN", UnitNumber = "101", MonthlyRent = 1200.00m },
-                new Property { PropertyID = 2, PropertyName = "Riverview", Address = "200 State St, Newburgh, IN", UnitNumber = "A2", MonthlyRent = 1500.00m },
-                new Property { PropertyID = 3, PropertyName = "Hidden Creek", Address = "55 Highland Rd, Evansville, IN", UnitNumber = "10", MonthlyRent = 950.00m }
+                new Property { PropertyID = 1, PropertyName = "Maple Grove", Address = "1420 Lincoln Ave, Newburgh, IN", UnitNum = "101", MonthlyRent = 1200.00m },
+                new Property { PropertyID = 2, PropertyName = "Riverview", Address = "200 State St, Newburgh, IN", UnitNum = "A2", MonthlyRent = 1500.00m },
+                new Property { PropertyID = 3, PropertyName = "Hidden Creek", Address = "55 Highland Rd, Evansville, IN", UnitNum = "10", MonthlyRent = 950.00m }
             );
 
             // Tenants 
@@ -48,16 +42,16 @@ namespace PropertyManager.Models
 
             // MaintenanceProjects
             modelBuilder.Entity<MaintenanceProjects>().HasData(
-                new MaintenanceProjects { ProjectID = 1, PropertyID = 1, ProjectTitle = "Fix leaking roof", BidAmount = 2850.00m, Status = InvoiceStatus.Approved, AssginedVendor = "RoofMaster LLC" },
-                new MaintenanceProjects { ProjectID = 2, PropertyID = 2, ProjectTitle = "HVAC Inspection", BidAmount = 180.00m, Status = InvoiceStatus.Closed, AssginedVendor = "CoolAir Services" },
-                new MaintenanceProjects { ProjectID = 3, PropertyID = 1, ProjectTitle = "Kitchen Faucet Repair", BidAmount = 320.00m, Status = InvoiceStatus.Work_Order, AssginedVendor = "PlumbQuick" }
+                new MaintenanceProjects { ProjectID = 1, PropertyID = 1, ProjectTitle = "Fix leaking roof", BidAmount = 2850.00m, Status = InvoiceStatus.Approved, AssignedVendor = "RoofMaster LLC" },
+                new MaintenanceProjects { ProjectID = 2, PropertyID = 2, ProjectTitle = "HVAC Inspection", BidAmount = 180.00m, Status = InvoiceStatus.Closed, AssignedVendor = "CoolAir Services" },
+                new MaintenanceProjects { ProjectID = 3, PropertyID = 1, ProjectTitle = "Kitchen Faucet Repair", BidAmount = 320.00m, Status = InvoiceStatus.Work_Order, AssignedVendor = "PlumbQuick" }
             );
 
             // WorkLogs
             modelBuilder.Entity<WorkLogs>().HasData(
-                new WorkLogs { LogID = 1, ProjectID = 1, ClockInTime = DateTime.Now.AddDays(-2), ClockOutTime = DateTime.Now.AddDays(-2).AddHours(4), GPSLocation = "37.94, -87.40", MaterialsUsed = "Shingles, Tar" },
-                new WorkLogs { LogID = 2, ProjectID = 2, ClockInTime = DateTime.Now.AddDays(-1), ClockOutTime = DateTime.Now.AddDays(-1).AddHours(1), GPSLocation = "37.94, -87.41", MaterialsUsed = "Air Filter" },
-                new WorkLogs { LogID = 3, ProjectID = 3, ClockInTime = DateTime.Now, ClockOutTime = DateTime.Now.AddHours(2), GPSLocation = "37.94, -87.40", MaterialsUsed = "New Faucet, Teflon Tape" }
+                new WorkLogs { LogID = 1, ProjectID = 1, ClockInTime = DateTime.Now.AddDays(-2), ClockOutTime = DateTime.Now.AddDays(-2).AddHours(4), GPSLocation = "37.94, -87.40", MaterialsUsed = "Shingles, Tar", VendorSignature = "Signed-Digitally-01" },
+                new WorkLogs { LogID = 2, ProjectID = 2, ClockInTime = DateTime.Now.AddDays(-1), ClockOutTime = DateTime.Now.AddDays(-1).AddHours(1), GPSLocation = "37.94, -87.41", MaterialsUsed = "Air Filter", VendorSignature = "Signed-Digitally-02" },
+                new WorkLogs { LogID = 3, ProjectID = 3, ClockInTime = DateTime.Now, ClockOutTime = DateTime.Now.AddHours(2), GPSLocation = "37.94, -87.40", MaterialsUsed = "New Faucet, Teflon Tape" , VendorSignature = "Signed-Digitally-03"}
             );
 
             // RentPayments 

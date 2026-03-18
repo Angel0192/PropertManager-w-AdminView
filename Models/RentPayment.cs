@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace PropertyManager.Models
 {
     public class RentPayment
     {
         // PaymentID
+        [Key]
         public int PaymentID {get; set;}
 
         // ScheduleID
@@ -24,5 +26,7 @@ namespace PropertyManager.Models
 
         //Transaction Reference
         public string TransactionReference{get;set;}
+
+        public RentSchedules? RentSchedule {get; set;}
     }
 }

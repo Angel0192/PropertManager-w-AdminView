@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace PropertyManager.Models
 {
     public class Invoices
     {
+        [Key]
         public int? InvoiceID{get; set;}
 
         public int? ProjectID{get; set;} = null;
@@ -17,6 +19,9 @@ namespace PropertyManager.Models
 
         public decimal TotalAmount{get; set;}
 
-        public bool isExported{get; set;} = 0;
+        public bool IsExported{get; set;} = false;
+
+        public MaintenanceProjects? Project { get; set; }
+        public RentSchedules? RentSchedule { get; set; }
     }
 }
