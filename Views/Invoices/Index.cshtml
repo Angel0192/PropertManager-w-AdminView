@@ -1,0 +1,21 @@
+@model IEnumerable<PropertyManager.Models.Invoices>
+
+@{
+    ViewData["Title"] = "Invoices";
+}
+
+<h1>Invoices</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Invoice</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Invoice Date</th>
+            <th>Total Amount</th>
+            <th>Is Exported</th>
+        </tr>
+    </thead>
+</table>
