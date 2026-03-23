@@ -1,2 +1,34 @@
 @model PropertyManager.Models.Invoices
 
+<h1>Add New Invoice</h1>
+
+<form asp-action="Create">
+
+    <!-- Project Selection --->
+    <div class="form-group mb-2">
+        <label>Assigned Project:</label>
+        <select asp-for="ProjectID" class="form-control" asp-items="ViewBag.Project">
+            <option value="">-- Select a Project --</option>
+        </select>
+    </div>
+
+    <!-- RentSchedule --->
+    
+    <!--Invoice Date-->
+    <div class="form-group mb-2">
+        <label asp-for="InvoiceDate">Invoice Date:</label>
+        <input type="date" asp-for="InvoiceDate" class="form-control"/>
+    </div>
+
+    <!--Total Amount-->
+    <div class="form-group mb-2">
+        <label asp-for="TotalAmount">Total Amount:</label>
+        <input type="number" asp-for="TotalAmount" class="form-control"/>
+    </div>
+
+    <!--IsExported-->
+
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    
+</form>

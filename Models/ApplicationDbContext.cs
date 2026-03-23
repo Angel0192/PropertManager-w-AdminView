@@ -62,8 +62,20 @@ namespace PropertyManager.Models
             );
 
             modelBuilder.Entity<Invoices>().HasData(
-                new Invoices { InvoiceID = 1, ProjectID = 1, ScheduleID = null, InvoiceDate = DateTime.Parse("2026-03-18"), TotalAmount = 2850.00m, IsExported = false },
-                new Invoices { InvoiceID = 2, ProjectID = null, ScheduleID = 2, InvoiceDate = DateTime.Parse("2026-03-08"), TotalAmount = 1200.00m, IsExported = true },
+                new Invoices { 
+                    InvoiceID = 1, 
+                    ProjectID = 1, 
+                    ScheduleID = null, 
+                    InvoiceDate = DateTime.Parse("2026-03-18"), 
+                    TotalAmount = 2850.00m, 
+                    IsExported = false },
+                new Invoices { 
+                    InvoiceID = 2, 
+                    ProjectID = null, 
+                    ScheduleID = 2, 
+                    InvoiceDate = DateTime.Parse("2026-03-08"), 
+                    TotalAmount = 1200.00m, 
+                    IsExported = true },
                 new Invoices { InvoiceID = 3, ProjectID = 2, ScheduleID = null, InvoiceDate = DateTime.Parse("2026-03-18"), TotalAmount = 180.00m, IsExported = false }
             );
         }
