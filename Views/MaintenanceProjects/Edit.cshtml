@@ -1,0 +1,50 @@
+@model PropertyManager.Models.MaintenanceProjects
+
+<h1>Edit Maintenance Project</h1>
+
+<form asp-action="Edit">
+
+    <!-- Hidden Project ID-->
+    <input type="hidden" asp-for="ProjectID" />
+
+    <!-- Project Title-->
+    <div class="form-group mb-2">
+        <label asp-for="ProjectTitle">Project Title:</label>
+        <input asp-for="ProjectTitle" class="form-control" />
+    </div>
+
+    <!-- Property -->
+    <div class="form-group mb-3">
+        <label>Assign Property:</label>
+        <select asp-for="PropertyID" class="form-control" asp-items="ViewBag.PropertyID">
+            <option>-- Select a Property</option>
+        </select>
+    </div>
+
+    <!-- Bid Amount -->
+    <div class="form-group mb-2">
+        <label asp-for="BidAmount">Bid Amount</label>
+        <input type="number" asp-for="BidAmount" class="form-control" />
+    </div>
+
+    <!-- Status -->
+    <div class="form-group mb-3">
+        <label>Invoice Status</label>
+        <select asp-for="Status" class="form-control"
+                asp-items="Html.GetEnumSelectList<PropertyManager.Models.InvoiceStatus>()">
+            <option value="">-- Select a Status --</option>
+        </select>
+    </div>
+
+
+    <!-- AssignedVendor -->
+    <div class="form-group mb-3">
+        <label>Assigned Vendor:</label>
+        <input asp-for="AssignedVendor" class="form-control" />
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+
+</form>
