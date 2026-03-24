@@ -1,14 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using PropertyManager.Models; 
+using PropertyManager.Models;
 
 public class RentPaymentsController : Controller
 {
     private readonly ApplicationDbContext _context;
     public RentPaymentsController(ApplicationDbContext context) => _context = context;
 
-    public async Task<IActionResult> Index() => 
+    public async Task<IActionResult> Index() =>
         View(await _context.RentPayments.Include(r => r.RentSchedule).ToListAsync());
 
     public IActionResult Create()
@@ -29,5 +29,18 @@ public class RentPaymentsController : Controller
             return RedirectToAction(nameof(Index));
         }
         return View(rentPayment);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteConfirmed(int id)
+    {
+        var payment = await _context.RentPayments.FindAsync(id);
+        if (payment != null)
+        {
+            _context.RentPayments.Remove(payment);
+            await _context.SaveChangesAsync();
+        }
+        return RedirectToAction(nameof(Index));
     }
 }

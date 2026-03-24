@@ -1,14 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using PropertyManager.Models; 
+using PropertyManager.Models;
 
 public class InvoicesController : Controller
 {
     private readonly ApplicationDbContext _context;
     public InvoicesController(ApplicationDbContext context) => _context = context;
 
-    public async Task<IActionResult> Index() => 
+    public async Task<IActionResult> Index() =>
         View(await _context.Invoices.Include(i => i.Project).Include(i => i.RentSchedule).ToListAsync());
 
     public IActionResult Create()
@@ -29,5 +29,18 @@ public class InvoicesController : Controller
             return RedirectToAction(nameof(Index));
         }
         return View(invoice);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteConfirmed(int id)
+    {
+        var invoice = await _context.Invoices.FindAsync(id);
+        if (invoice != null)
+        {
+            _context.Invoices.Remove(invoice);
+            await _context.SaveChangesAsync();
+        }
+        return RedirectToAction(nameof(Index));
     }
 }

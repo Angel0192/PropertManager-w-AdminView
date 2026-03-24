@@ -1,14 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using PropertyManager.Models; 
+using PropertyManager.Models;
 
 public class WorkLogsController : Controller
 {
     private readonly ApplicationDbContext _context;
     public WorkLogsController(ApplicationDbContext context) => _context = context;
 
-    public async Task<IActionResult> Index() => 
+    public async Task<IActionResult> Index() =>
         View(await _context.WorkLogs.Include(w => w.Project).ToListAsync());
 
     public IActionResult Create()
@@ -28,5 +28,18 @@ public class WorkLogsController : Controller
             return RedirectToAction(nameof(Index));
         }
         return View(workLog);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteConfirmed(int id)
+    {
+        var workLog = await _context.WorkLogs.FindAsync(id);
+        if (workLog != null)
+        {
+            _context.WorkLogs.Remove(workLog);
+            await _context.SaveChangesAsync();
+        }
+        return RedirectToAction(nameof(Index));
     }
 }

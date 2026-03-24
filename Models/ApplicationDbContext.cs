@@ -25,6 +25,20 @@ namespace PropertyManager.Models
             modelBuilder.Entity<RentSchedules>().Property(r => r.BaseRent).HasColumnType("decimal(18,2)");
             modelBuilder.Entity<RentSchedules>().Property(r => r.LateFeeOccured).HasColumnType("decimal(18,2)");
 
+            // 👇 ADDED: Cascade Delete Configuration 👇
+            modelBuilder.Entity<Invoices>()
+                .HasOne<MaintenanceProjects>()
+                .WithMany()
+                .HasForeignKey(i => i.ProjectID)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<WorkLogs>()
+                .HasOne<MaintenanceProjects>()
+                .WithMany()
+                .HasForeignKey(w => w.ProjectID)
+                .OnDelete(DeleteBehavior.Cascade);
+            // 👆 END Cascade Delete Configuration 👆
+
             modelBuilder.Entity<Property>().HasData(
                 new Property { PropertyID = 1, PropertyName = "Maple Grove", Address = "1420 Lincoln Ave, Newburgh, IN", UnitNum = "101", MonthlyRent = 1200.00m },
                 new Property { PropertyID = 2, PropertyName = "Riverview", Address = "200 State St, Newburgh, IN", UnitNum = "A2", MonthlyRent = 1500.00m },
