@@ -1,0 +1,42 @@
+@model IEnumerable<PropertyManager.Models.RentSchedules>
+
+@{
+    ViewData["Title"] = "Rent Schedules";
+}
+
+<h1>Rent Schedules</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Schedule</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tenant</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Base Rent</th>
+            <th>Late Fees</th>
+            <th>Reminders</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@item.Tenant?.LastName</td>
+            <td>@item.Date.ToString("MM/dd/yyyy")</td>
+            <td>@item.Status</td>
+            <td>@item.BaseRent.ToString("C")</td>
+            <td>@item.LateFeeOccured.ToString("C")</td>
+            <td>@item.ReminderCount</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ScheduleID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ScheduleID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ScheduleID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

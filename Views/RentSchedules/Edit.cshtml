@@ -1,0 +1,44 @@
+@model PropertyManager.Models.RentSchedules
+
+@{
+    ViewData["Title"] = "Edit Rent Schedule";
+}
+
+<h1>Edit Rent Schedule</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="ScheduleID" />
+            <div class="form-group mb-2">
+                <label asp-for="TenantID" class="control-label">Tenant</label>
+                <select asp-for="TenantID" class="form-control" asp-items="ViewBag.TenantID"></select>
+            </div>
+            <div class="form-group mb-2">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" type="date" class="form-control" />
+            </div>
+            <div class="form-group mb-2">
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" class="form-control" asp-items="Html.GetEnumSelectList<PropertyManager.Models.RentStatus>()"></select>
+            </div>
+            <div class="form-group mb-2">
+                <label asp-for="BaseRent" class="control-label"></label>
+                <input asp-for="BaseRent" class="form-control" />
+            </div>
+            <div class="form-group mb-2">
+                <label asp-for="LateFeeOccured" class="control-label"></label>
+                <input asp-for="LateFeeOccured" class="form-control" />
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="ReminderCount" class="control-label"></label>
+                <input asp-for="ReminderCount" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

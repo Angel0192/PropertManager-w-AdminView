@@ -1,0 +1,28 @@
+@model PropertyManager.Models.RentPayment
+
+@{
+    ViewData["Title"] = "Delete Payment";
+}
+
+<h1>Delete Payment</h1>
+<h3 class="text-danger">Are you sure you want to remove this payment record?</h3>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Payment Date</dt>
+        <dd class="col-sm-9">@Model.PaymentDate.ToString("MM/dd/yyyy")</dd>
+
+        <dt class="col-sm-3">Amount</dt>
+        <dd class="col-sm-9">@Model.AmountPaid.ToString("C")</dd>
+
+        <dt class="col-sm-3">Reference</dt>
+        <dd class="col-sm-9">@Model.TransactionReference</dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="PaymentID" />
+        <input type="submit" value="Confirm Delete" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

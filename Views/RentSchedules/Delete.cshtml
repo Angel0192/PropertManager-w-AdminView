@@ -1,0 +1,25 @@
+@model PropertyManager.Models.RentSchedules
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete Rent Schedule</h1>
+<h3 class="text-danger">Are you sure you want to delete this schedule?</h3>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Tenant</dt>
+        <dd class="col-sm-9">@Model.Tenant?.LastName</dd>
+        
+        <dt class="col-sm-3">Date</dt>
+        <dd class="col-sm-9">@Model.Date.ToString("MMMM yyyy")</dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ScheduleID" />
+        <input type="submit" value="Confirm Delete" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

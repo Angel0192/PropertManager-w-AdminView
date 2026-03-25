@@ -1,0 +1,53 @@
+@model PropertyManager.Models.RentSchedules
+
+@{
+    ViewData["Title"] = "Create Rent Schedule";
+}
+
+<h1>Create Rent Schedule</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+
+            <!-- Tenant Selection -->
+            <div class="form-group mb-2">
+                <label asp-for="TenantID" class="control-label">Tenant</label>
+                <select asp-for="TenantID" class="form-control" asp-items="ViewBag.TenantID">
+                    <option>-- Select a Tenant --</option>
+                </select>
+            </div>
+
+            <!-- Due Date-->
+            <div class="form-group mb-2">
+                <label asp-for="Date" class="control-label">Due Date</label>
+                <input asp-for="Date" type="date" class="form-control" />
+            </div>
+
+            <!-- Status -->
+            <div class="form-group mb-2">
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" class="form-control" asp-items="Html.GetEnumSelectList<PropertyManager.Models.RentStatus>()"></select>
+            </div>
+
+            <!-- Base Rent -->
+            <div class="form-group mb-2">
+                <label asp-for="BaseRent" class="control-label">Base Rent</label>
+                <input asp-for="BaseRent" class="form-control" type="number" step="0.01" />
+            </div>
+
+            <!-- Late Fee Occured? -->
+            <div class="form-group mb-3">
+                <label asp-for="LateFeeOccured" class="control-label">Late Fee</label>
+                <input asp-for="LateFeeOccured" class="form-control" type="number" step="0.01" />
+            </div>
+
+            
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+@model IEnumerable<PropertyManager.Models.WorkLogs>
+
+@{
+    ViewData["Title"] = "Work Logs";
+}
+
+<h1>Work Logs</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">New Log Entry</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Project</th>
+            <th>Clock In</th>
+            <th>Clock Out</th>
+            <th>Materials</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@item.Project?.ProjectTitle</td>
+            <td>@item.ClockInTime.ToString("MM/dd HH:mm")</td>
+            <td>@item.ClockOutTime.ToString("MM/dd HH:mm")</td>
+            <td>@item.MaterialsUsed</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.LogID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.LogID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.LogID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
