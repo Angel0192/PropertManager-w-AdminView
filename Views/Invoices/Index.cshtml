@@ -11,29 +11,30 @@
 </p>
 
 <table class="table">
-    <!--Constructs table headers-->
     <thead>
         <tr>
+            <th>ID</th>
             <th>Project</th>
-            <th>Rent Schedule</th>
+            <th>Rent Status</th>
             <th>Invoice Date</th>
-            <th>Total Amount</th>
-            <th>Is Exported</th>
-
-            <th>Action</th>
+            <th>Amount</th>
+            <th>Exported</th>
+            <th>Actions</th>
         </tr>
     </thead>
-
-    <!--Creates the body and data for each row with the Model data-->
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.ProjectID</td>
-                <td>@item.RentSchedule</td>
+                <td>@item.InvoiceID</td>
+                
+                <td>@(item.Project?.ProjectTitle ?? "N/A")</td>
+
+                <td>ID: @(item.ScheduleID?.ToString() ?? "Empty")</td>
+                
                 <td>@item.InvoiceDate.ToString("MM/dd/yyyy")</td>
-                <td>$@item.TotalAmount</td>
-                <td>@item.IsExported</td>
+                <td>@item.TotalAmount.ToString("C")</td>
+                <td>@(item.IsExported ? "Yes" : "No")</td>
 
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.InvoiceID">Edit</a> |

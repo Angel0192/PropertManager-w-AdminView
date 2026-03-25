@@ -1,0 +1,30 @@
+@model PropertyManager.Models.Invoices
+
+<h1>Invoice Details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Invoice ID</dt>
+        <dd class="col-sm-9">@Model.InvoiceID</dd>
+
+        <dt class="col-sm-3">Maintenance Project</dt>
+        <dd class="col-sm-9">@(Model.Project?.ProjectTitle ?? "N/A")</dd>
+
+        <dt class="col-sm-3">Rent Schedule Status</dt>
+        <dd class="col-sm-9">@(Model.RentSchedule?.Status.ToString() ?? "N/A")</dd>
+
+        <dt class="col-sm-3">Invoice Date</dt>
+        <dd class="col-sm-9">@Model.InvoiceDate.ToString("MM/dd/yyyy")</dd>
+
+        <dt class="col-sm-3">Total Amount</dt>
+        <dd class="col-sm-9">$@Model.TotalAmount</dd>
+
+        <dt class="col-sm-3">Exported</dt>
+        <dd class="col-sm-9">@(Model.IsExported ? "Yes" : "No")</dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.InvoiceID" class="btn btn-primary">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

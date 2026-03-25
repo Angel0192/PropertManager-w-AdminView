@@ -21,7 +21,7 @@ namespace PropertyManager.Models
 
         public bool IsExported{get; set;} = false;
 
-        public MaintenanceProjects? Project { get; set; }
-        public RentSchedules? RentSchedule { get; set; }
+        public virtual MaintenanceProjects? Project { get; set; } = default!;
+        public virtual RentSchedules? RentSchedule { get; set; } = default!;
     }
 }

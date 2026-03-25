@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PropertyManager.Models;
 
@@ -11,9 +12,11 @@ using PropertyManager.Models;
 namespace PropertyManager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260325000217_CleanSeedFix")]
+    partial class CleanSeedFix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,7 +66,6 @@ namespace PropertyManager.Migrations
                             InvoiceDate = new DateTime(2026, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsExported = false,
                             ProjectID = 1,
-                            ScheduleID = 3,
                             TotalAmount = 2850.00m
                         },
                         new
@@ -80,7 +82,6 @@ namespace PropertyManager.Migrations
                             InvoiceDate = new DateTime(2026, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsExported = false,
                             ProjectID = 2,
-                            ScheduleID = 1,
                             TotalAmount = 180.00m
                         });
                 });

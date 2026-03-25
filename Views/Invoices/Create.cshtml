@@ -7,26 +7,36 @@
     <!-- Project Selection --->
     <div class="form-group mb-2">
         <label>Assigned Project:</label>
-        <select asp-for="ProjectID" class="form-control" asp-items="ViewBag.Project">
+        <select asp-for="ProjectID" class="form-control" asp-items="@ViewBag.ProjectID">
             <option value="">-- Select a Project --</option>
         </select>
     </div>
 
     <!-- RentSchedule --->
+    <div class="form-group mb-2">
+        <label>Select Status:</label>
+        <select asp-for="ScheduleID" class="form-control" asp-items="@ViewBag.ScheduleID">
+            <option value="">-- Select a Status --</option>
+        </select>
+    </div>
     
     <!--Invoice Date-->
     <div class="form-group mb-2">
         <label asp-for="InvoiceDate">Invoice Date:</label>
-        <input type="date" asp-for="InvoiceDate" class="form-control"/>
+        <input type="date" asp-for="InvoiceDate" class="form-control" />
     </div>
 
     <!--Total Amount-->
     <div class="form-group mb-2">
         <label asp-for="TotalAmount">Total Amount:</label>
-        <input type="number" asp-for="TotalAmount" class="form-control"/>
+        <input type="number" asp-for="TotalAmount" class="form-control" />
     </div>
 
     <!--IsExported-->
+    <div class="form-group mb-2">
+        <label>Check if Exported:</label>
+        <input class="form-check-input" type="checkbox" asp-for="IsExported" />
+    </div>
 
     <button type="submit" class="btn btn-primary">Create</button>
     <a asp-action="Index" class="btn btn-secondary">Cancel</a>

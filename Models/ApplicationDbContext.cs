@@ -1,4 +1,4 @@
-using System.Net.Sockets;
+using System;
 using Microsoft.EntityFrameworkCore;
 using PropertyManager.Models;
 
@@ -25,19 +25,17 @@ namespace PropertyManager.Models
             modelBuilder.Entity<RentSchedules>().Property(r => r.BaseRent).HasColumnType("decimal(18,2)");
             modelBuilder.Entity<RentSchedules>().Property(r => r.LateFeeOccured).HasColumnType("decimal(18,2)");
 
-            // 👇 ADDED: Cascade Delete Configuration 👇
             modelBuilder.Entity<Invoices>()
-                .HasOne<MaintenanceProjects>()
+                .HasOne(i => i.Project)
                 .WithMany()
                 .HasForeignKey(i => i.ProjectID)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<WorkLogs>()
-                .HasOne<MaintenanceProjects>()
+                .HasOne(w => w.Project)
                 .WithMany()
                 .HasForeignKey(w => w.ProjectID)
                 .OnDelete(DeleteBehavior.Cascade);
-            // 👆 END Cascade Delete Configuration 👆
 
             modelBuilder.Entity<Property>().HasData(
                 new Property { PropertyID = 1, PropertyName = "Maple Grove", Address = "1420 Lincoln Ave, Newburgh, IN", UnitNum = "101", MonthlyRent = 1200.00m },
@@ -76,21 +74,9 @@ namespace PropertyManager.Models
             );
 
             modelBuilder.Entity<Invoices>().HasData(
-                new Invoices { 
-                    InvoiceID = 1, 
-                    ProjectID = 1, 
-                    ScheduleID = null, 
-                    InvoiceDate = DateTime.Parse("2026-03-18"), 
-                    TotalAmount = 2850.00m, 
-                    IsExported = false },
-                new Invoices { 
-                    InvoiceID = 2, 
-                    ProjectID = null, 
-                    ScheduleID = 2, 
-                    InvoiceDate = DateTime.Parse("2026-03-08"), 
-                    TotalAmount = 1200.00m, 
-                    IsExported = true },
-                new Invoices { InvoiceID = 3, ProjectID = 2, ScheduleID = null, InvoiceDate = DateTime.Parse("2026-03-18"), TotalAmount = 180.00m, IsExported = false }
+                new Invoices { InvoiceID = 1, ProjectID = 1, ScheduleID = 3, InvoiceDate = DateTime.Parse("2026-03-18"), TotalAmount = 2850.00m, IsExported = false },
+                new Invoices { InvoiceID = 2, ProjectID = null, ScheduleID = 2, InvoiceDate = DateTime.Parse("2026-03-08"), TotalAmount = 1200.00m, IsExported = true },
+                new Invoices { InvoiceID = 3, ProjectID = 2, ScheduleID = 1, InvoiceDate = DateTime.Parse("2026-03-18"), TotalAmount = 180.00m, IsExported = false }
             );
         }
     }
